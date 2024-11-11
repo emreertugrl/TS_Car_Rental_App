@@ -3,14 +3,14 @@ import Button from "../button";
 
 const Header = () => {
   return (
-    <div>
-      <div>
+    <header className="w-full z-10">
+      <div className=" max-width flex justify-between items-center px-6 py-4">
         <Link to={"/"}>
-          <img src="/bmw.png" />
+          <img src="/bmw.png" width={50} />
         </Link>
-        <Button title=" Prop" />
+        <Button title="Kaydol" designs="min-w-[130px]" />
       </div>
-    </div>
+    </header>
   );
 };
 
