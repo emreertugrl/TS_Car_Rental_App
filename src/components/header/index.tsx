@@ -8,7 +8,7 @@ const Header = () => {
         <Link to={"/"}>
           <img src="/bmw.png" />
         </Link>
-        <Button title={"Prop"} />
+        <Button title=" Prop" />
       </div>
     </div>
   );
