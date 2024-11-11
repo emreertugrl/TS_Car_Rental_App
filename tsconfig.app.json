@@ -19,8 +19,8 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false, // değişken tanımlanınca ve kullanmayınca uyarı
+    "noUnusedParameters": false, // parametre kullanmayınca uyarı
     "noFallthroughCasesInSwitch": true
   },
   "include": ["src"]
