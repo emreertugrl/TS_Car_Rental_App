@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchCars } from "./../../utils/fetchCars";
 import { CarType } from "../../utils/types";
+import Warning from "./Warning";
+import Card from "./Card";
 
 const List = () => {
   const [cars, setCars] = useState<CarType[] | null>(null);
@@ -18,15 +20,25 @@ const List = () => {
   // 3- cars [] ise > Aranılan kriterde araç yoktur.
   // 4- cars dolu[] ise > Apı'den veriler gelmiştir.
   return (
-    <div>
+    <div className="padding-x max-width">
       {!cars ? (
-        <p>Yükleniyor</p>
+        <Warning>
+          <p>Yükleniyor...</p>
+        </Warning>
       ) : isError ? (
-        <p>Hata !!</p>
+        <Warning>Bir hata oluştu</Warning>
       ) : cars.length < 1 ? (
-        <p>Aranılan Kriter</p>
+        <Warning>Aranılan kriterlere uygun sonuç bulunamadı</Warning>
       ) : (
-        cars.length >= 1 && <section>Veriler Geldi</section>
+        cars.length >= 1 && (
+          <section>
+            <div className="home__cars-wrapper">
+              {cars.map((car, i) => (
+                <Card key={i} car={car} />
+              ))}
+            </div>
+          </section>
+        )
       )}
     </div>
   );
