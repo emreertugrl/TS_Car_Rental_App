@@ -1,3 +1,4 @@
+import generateImage from "../../utils/generateImage";
 import { CarType } from "../../utils/types";
 import Button from "../button";
 import Modal from "../modal";
@@ -44,7 +45,11 @@ const Card = ({ car }: Props) => {
       </div>
       {/* resim alanı */}
       <div className="w-full">
-        <img src="/hero.png" className="w-full h-full object-contain" alt="" />
+        <img
+          src={generateImage(car)}
+          className="w-full h-full object-contain"
+          alt=""
+        />
       </div>
       {/* alt kısım */}
       <div className="w-full ">

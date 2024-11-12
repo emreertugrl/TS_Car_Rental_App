@@ -9,7 +9,7 @@ const options = {
 
 export const fetchCars = async (): Promise<CarType[]> => {
   try {
-    const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=BMW&model=m4`;
+    const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=BMW`;
     const res = await fetch(url, options);
     const data = await res.json();
     // console.log(data);
