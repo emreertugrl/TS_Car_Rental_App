@@ -3,17 +3,19 @@ import { fetchCars } from "./../../utils/fetchCars";
 import { CarType } from "../../utils/types";
 import Warning from "./Warning";
 import Card from "./Card";
+import Button from "../button";
 
 const List = () => {
   const [cars, setCars] = useState<CarType[] | null>(null);
   const [isError, setIsError] = useState<boolean>(false);
+  const [limit, setLimit] = useState<number>(5);
 
   //api'dan verileri al
   useEffect(() => {
-    fetchCars()
+    fetchCars({ limit })
       .then((data) => setCars(data))
       .catch((err) => setIsError(true));
-  }, []);
+  }, [limit]);
 
   // 1- cars null ise > Henüz Apı'den cevap gelmemiştir
   // 2- isError true ise > Apı'den hatalı cevap gelmiştir
@@ -36,6 +38,14 @@ const List = () => {
               {cars.map((car, i) => (
                 <Card key={i} car={car} />
               ))}
+            </div>
+            <div className="w-full flex-center py-10">
+              {limit < 30 && (
+                <Button
+                  title="Devamını Yükle"
+                  handleClick={() => setLimit(limit + 5)}
+                />
+              )}
             </div>
           </section>
         )

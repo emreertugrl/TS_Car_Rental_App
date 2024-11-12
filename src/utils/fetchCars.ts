@@ -6,10 +6,13 @@ const options = {
     "x-rapidapi-host": "cars-by-api-ninjas.p.rapidapi.com",
   },
 };
+type Parametres = {
+  limit: number;
+};
 
-export const fetchCars = async (): Promise<CarType[]> => {
+export const fetchCars = async ({ limit }: Parametres): Promise<CarType[]> => {
   try {
-    const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=BMW`;
+    const url = `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=BMW&limit=${limit}`;
     const res = await fetch(url, options);
     const data = await res.json();
     // console.log(data);
