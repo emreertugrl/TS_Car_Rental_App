@@ -1,13 +1,34 @@
 import { CarType } from "../../utils/types";
 import Button from "../button";
+import Modal from "../modal";
 import Info from "./Info";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 type Props = {
   car: CarType;
 };
 const Card = ({ car }: Props) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+
+    document.body.style.overflow = "auto";
+  };
+
   return (
-    <div className="car-card group">
+    <motion.div
+      initial={{ scale: 0.5, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      className="car-card group"
+    >
       {/* araba ismi */}
       <h2 className="car-card__content-title">
         {car.make} {car.model}
@@ -26,15 +47,21 @@ const Card = ({ car }: Props) => {
         <img src="/hero.png" className="w-full h-full object-contain" alt="" />
       </div>
       {/* alt kısım */}
-      <div className="w-full bg-red-200">
+      <div className="w-full ">
         <div className="group-hover:hidden">
           <Info car={car} />
         </div>
-        <div className=" hidden group-hover:flex ">
-          <Button title="Daha Fazla" designs="w-full py-[25px] text-white" />
+        <div className="mt-[4px] hidden group-hover:flex ">
+          <Button
+            icon="right-arrow.svg"
+            title="Daha Fazla"
+            designs="w-full py-[25px] text-white"
+            handleClick={handleOpen}
+          />
         </div>
       </div>
-    </div>
+      <Modal isOpen={isOpen} close={handleClose} car={car} />
+    </motion.div>
   );
 };
 
