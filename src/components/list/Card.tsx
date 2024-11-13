@@ -48,7 +48,7 @@ const Card = ({ car }: Props) => {
         <img
           src={generateImage(car)}
           className="w-full h-full object-contain"
-          alt=""
+          alt={car.make + car.model}
         />
       </div>
       {/* alt kısım */}

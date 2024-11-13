@@ -16,7 +16,7 @@ const Field = ({
       whileInView={{ translateY: 0, opacity: 1 }}
       className="flex-center flex-col"
     >
-      <img src={img} alt="" width={25} />
+      <img src={img} alt="icon" width={25} />
       <p className={className}>{text}</p>
     </motion.div>
   );

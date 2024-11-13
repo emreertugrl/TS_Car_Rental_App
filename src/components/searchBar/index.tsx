@@ -35,27 +35,27 @@ const SearchBar = () => {
           options={options}
           placeholder="Marka Seçiniz..."
           defaultValue={selected}
+          aria-label="search"
         />
         <button className="ml-3 sm:hidden">
-          <img src="/search.svg" className="size-10" alt="" />
+          <img alt="magnifying glass" src="/search.svg" className="size-10" />
         </button>
       </div>
       <div className="searchbar__item">
-        <img
-          src="/model-icon.png"
-          alt=""
-          className="absolute ml-4"
-          width={25}
-        />
+        <label htmlFor="model" className="absolute ml-4">
+          <img src="/model-icon.png" alt="car from front" width={25} />
+        </label>
         <input
+          title="search for spesific model"
+          id="model"
           type="text"
           className="searchbar__input rounded text-black"
           placeholder="Örn: Mondeo"
           onChange={(e) => setModel(e.target.value)}
           defaultValue={params.get("model") || ""}
         />
-        <button className="ml-3">
-          <img src="/search.svg" className="size-10" alt="" />
+        <button aria-label="search" className="ml-3">
+          <img alt="magnifying glass" src="/search.svg" className="size-10" />
         </button>
       </div>
     </form>

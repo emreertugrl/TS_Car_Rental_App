@@ -13,16 +13,21 @@ const YearFilter = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex justify-center bg-gray-500 rounded"
+      className="flex justify-center bg-gray-500 rounded items-center"
     >
+      <label htmlFor="year" className="mx-2">
+        Year:
+      </label>
       <input
+        id="year"
+        title="search for spesific year"
         type="number"
         className="w-24 py-[6px] px-2 rounded shadow text-black"
         placeholder="ör:2023"
         onChange={(e) => setYear(e.target.value)}
       />
-      <button>
-        <img src="right-arrow.svg" alt="" />
+      <button aria-label="search year">
+        <img src="right-arrow.svg" alt="right-arrow" />
       </button>
     </form>
   );

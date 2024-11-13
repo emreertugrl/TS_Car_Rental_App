@@ -1,16 +1,13 @@
-import Filter from "./components/filter";
-import Header from "./components/header";
-import Hero from "./components/hero";
-import List from "./components/list";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Main from "./pages/Main";
+import Undifined from "./pages/Undifined";
 
 const App = () => {
   return (
-    <div className="bg-[rgb(23,23,23)] text-white min-h-screen">
-      <Header />
-      <Hero />
-      <Filter />
-      <List />
-    </div>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="*" element={<Undifined />} />
+    </Routes>
   );
 };
 
